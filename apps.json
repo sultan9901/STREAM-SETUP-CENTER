@@ -1,0 +1,394 @@
+{
+  "apps": [
+    {
+      "name": "DirectX Web Setup",
+      "version": "latest",
+      "filename": "dxwebsetup.exe",
+      "url": "https://example.com/dxwebsetup.exe",
+      "sha256": "PLACEHOLDER",
+      "silentArgs": "/Q",
+      "enabled": true,
+      "category": "Dependencies"
+    },
+    {
+      "name": "Microsoft Visual C++ 2005 x86",
+      "version": "2005",
+      "filename": "vcredist_x86_2005.exe",
+      "url": "https://example.com/vcredist_x86_2005.exe",
+      "sha256": "PLACEHOLDER",
+      "silentArgs": "/q /norestart",
+      "enabled": true,
+      "category": "Dependencies"
+    },
+    {
+      "name": "Microsoft Visual C++ 2005 x64",
+      "version": "2005",
+      "filename": "vcredist_x64_2005.exe",
+      "url": "https://example.com/vcredist_x64_2005.exe",
+      "sha256": "PLACEHOLDER",
+      "silentArgs": "/q /norestart",
+      "enabled": true,
+      "category": "Dependencies"
+    },
+    {
+      "name": "Microsoft Visual C++ 2008 x86",
+      "version": "2008",
+      "filename": "vcredist_x86_2008.exe",
+      "url": "https://example.com/vcredist_x86_2008.exe",
+      "sha256": "PLACEHOLDER",
+      "silentArgs": "/q /norestart",
+      "enabled": true,
+      "category": "Dependencies"
+    },
+    {
+      "name": "Microsoft Visual C++ 2008 x64",
+      "version": "2008",
+      "filename": "vcredist_x64_2008.exe",
+      "url": "https://example.com/vcredist_x64_2008.exe",
+      "sha256": "PLACEHOLDER",
+      "silentArgs": "/q /norestart",
+      "enabled": true,
+      "category": "Dependencies"
+    },
+    {
+      "name": "Microsoft Visual C++ 2010 x86",
+      "version": "2010",
+      "filename": "vcredist_x86_2010.exe",
+      "url": "https://example.com/vcredist_x86_2010.exe",
+      "sha256": "PLACEHOLDER",
+      "silentArgs": "/q /norestart",
+      "enabled": true,
+      "category": "Dependencies"
+    },
+    {
+      "name": "Microsoft Visual C++ 2010 x64",
+      "version": "2010",
+      "filename": "vcredist_x64_2010.exe",
+      "url": "https://example.com/vcredist_x64_2010.exe",
+      "sha256": "PLACEHOLDER",
+      "silentArgs": "/q /norestart",
+      "enabled": true,
+      "category": "Dependencies"
+    },
+    {
+      "name": "Microsoft Visual C++ 2012 x86",
+      "version": "2012",
+      "filename": "vcredist_x86_2012.exe",
+      "url": "https://example.com/vcredist_x86_2012.exe",
+      "sha256": "PLACEHOLDER",
+      "silentArgs": "/install /quiet /norestart",
+      "enabled": true,
+      "category": "Dependencies"
+    },
+    {
+      "name": "Microsoft Visual C++ 2012 x64",
+      "version": "2012",
+      "filename": "vcredist_x64_2012.exe",
+      "url": "https://example.com/vcredist_x64_2012.exe",
+      "sha256": "PLACEHOLDER",
+      "silentArgs": "/install /quiet /norestart",
+      "enabled": true,
+      "category": "Dependencies"
+    },
+    {
+      "name": "Microsoft Visual C++ 2013 x86",
+      "version": "2013",
+      "filename": "vcredist_x86_2013.exe",
+      "url": "https://example.com/vcredist_x86_2013.exe",
+      "sha256": "PLACEHOLDER",
+      "silentArgs": "/install /quiet /norestart",
+      "enabled": true,
+      "category": "Dependencies"
+    },
+    {
+      "name": "Microsoft Visual C++ 2013 x64",
+      "version": "2013",
+      "filename": "vcredist_x64_2013.exe",
+      "url": "https://example.com/vcredist_x64_2013.exe",
+      "sha256": "PLACEHOLDER",
+      "silentArgs": "/install /quiet /norestart",
+      "enabled": true,
+      "category": "Dependencies"
+    },
+    {
+      "name": "Microsoft Visual C++ 2015 x86",
+      "version": "2015",
+      "filename": "vcredist_x86_2015.exe",
+      "url": "https://example.com/vcredist_x86_2015.exe",
+      "sha256": "PLACEHOLDER",
+      "silentArgs": "/install /quiet /norestart",
+      "enabled": true,
+      "category": "Dependencies"
+    },
+    {
+      "name": "Microsoft Visual C++ 2015 x64",
+      "version": "2015",
+      "filename": "vcredist_x64_2015.exe",
+      "url": "https://example.com/vcredist_x64_2015.exe",
+      "sha256": "PLACEHOLDER",
+      "silentArgs": "/install /quiet /norestart",
+      "enabled": true,
+      "category": "Dependencies"
+    },
+    {
+      "name": ".NET SDK 8",
+      "version": "8.0.424",
+      "filename": "dotnet-sdk-8.0.424-win-x86.exe",
+      "url": "https://example.com/dotnet-sdk-8.0.424-win-x86.exe",
+      "sha256": "PLACEHOLDER",
+      "silentArgs": "/quiet /norestart",
+      "enabled": true,
+      "category": "Dependencies"
+    },
+    {
+      "name": "Node.js",
+      "version": "latest",
+      "filename": "node-v20.x.x-x64.msi",
+      "url": "https://example.com/node.msi",
+      "sha256": "PLACEHOLDER",
+      "silentArgs": "/quiet /norestart",
+      "enabled": true,
+      "category": "Development"
+    },
+    {
+      "name": "Python 3.12",
+      "version": "3.12.9",
+      "filename": "python-3.12.9-amd64.exe",
+      "url": "https://example.com/python-3.12.9-amd64.exe",
+      "sha256": "PLACEHOLDER",
+      "silentArgs": "/quiet InstallAllUsers=1 PrependPath=1",
+      "enabled": true,
+      "category": "Development"
+    },
+    {
+      "name": "Python 3.14",
+      "version": "3.14.6",
+      "filename": "python-3.14.6-amd64.exe",
+      "url": "https://example.com/python-3.14.6-amd64.exe",
+      "sha256": "PLACEHOLDER",
+      "silentArgs": "/quiet InstallAllUsers=1 PrependPath=1",
+      "enabled": true,
+      "category": "Development"
+    },
+    {
+      "name": "Git",
+      "version": "2.55.0",
+      "filename": "Git-2.55.0.5-64-bit.exe",
+      "url": "https://example.com/Git-2.55.0.5-64-bit.exe",
+      "sha256": "PLACEHOLDER",
+      "silentArgs": "/VERYSILENT /NORESTART",
+      "enabled": true,
+      "category": "Development"
+    },
+    {
+      "name": "Visual Studio Code",
+      "version": "latest",
+      "filename": "VSCodeUserSetup-x64.exe",
+      "url": "https://example.com/vscode.exe",
+      "sha256": "PLACEHOLDER",
+      "silentArgs": "/VERYSILENT /MERGETASKS=!runcode",
+      "enabled": true,
+      "category": "Development"
+    },
+    {
+      "name": "Visual Studio Setup",
+      "version": "latest",
+      "filename": "vs_setup.exe",
+      "url": "https://example.com/vs_setup.exe",
+      "sha256": "PLACEHOLDER",
+      "silentArgs": "--quiet --norestart",
+      "enabled": true,
+      "category": "Development"
+    },
+    {
+      "name": "Google Chrome",
+      "version": "latest",
+      "filename": "ChromeSetup.exe",
+      "url": "https://example.com/ChromeSetup.exe",
+      "sha256": "PLACEHOLDER",
+      "silentArgs": "/silent /install",
+      "enabled": true,
+      "category": "Browsers"
+    },
+    {
+      "name": "WinRAR x64",
+      "version": "latest",
+      "filename": "winrar-x64.exe",
+      "url": "https://example.com/winrar.exe",
+      "sha256": "PLACEHOLDER",
+      "silentArgs": "/S",
+      "enabled": true,
+      "category": "Utilities"
+    },
+    {
+      "name": "Everything",
+      "version": "latest",
+      "filename": "Everything.exe",
+      "url": "https://example.com/Everything.exe",
+      "sha256": "PLACEHOLDER",
+      "silentArgs": "/S",
+      "enabled": true,
+      "category": "Utilities"
+    },
+    {
+      "name": "Revo Uninstaller",
+      "version": "Pro",
+      "filename": "RevoUninProSetup.exe",
+      "url": "https://example.com/RevoUninProSetup.exe",
+      "sha256": "PLACEHOLDER",
+      "silentArgs": "/VERYSILENT /NORESTART",
+      "enabled": true,
+      "category": "Utilities"
+    },
+    {
+      "name": "EaseUS",
+      "version": "Free",
+      "filename": "evw_free_easeus.exe",
+      "url": "https://example.com/evw_free_easeus.exe",
+      "sha256": "PLACEHOLDER",
+      "silentArgs": "/VERYSILENT /NORESTART",
+      "enabled": true,
+      "category": "Utilities"
+    },
+    {
+      "name": "Cloudflare WARP",
+      "version": "latest",
+      "filename": "Cloudflare_WARP_Release-x64.msi",
+      "url": "https://example.com/warp.msi",
+      "sha256": "PLACEHOLDER",
+      "silentArgs": "/quiet /norestart",
+      "enabled": true,
+      "category": "Network"
+    },
+    {
+      "name": "UltraViewer",
+      "version": "6.6.124",
+      "filename": "UltraViewer_setup_6.6.124_en.exe",
+      "url": "https://example.com/UltraViewer_setup.exe",
+      "sha256": "PLACEHOLDER",
+      "silentArgs": "/VERYSILENT",
+      "enabled": true,
+      "category": "Network"
+    },
+    {
+      "name": "BlueStacks",
+      "version": "5.22.130",
+      "filename": "BlueStacks_App_Player_v5.22.130.1019.exe",
+      "url": "https://example.com/BlueStacks.exe",
+      "sha256": "PLACEHOLDER",
+      "silentArgs": "",
+      "enabled": true,
+      "category": "Gaming"
+    },
+    {
+      "name": "BlueStacks Micro Installer",
+      "version": "5.22.75",
+      "filename": "BlueStacksMicroInstaller_5.22.75.6322_native.exe",
+      "url": "https://example.com/BlueStacksMicro.exe",
+      "sha256": "PLACEHOLDER",
+      "silentArgs": "",
+      "enabled": false,
+      "category": "Gaming"
+    },
+    {
+      "name": "OBS Studio",
+      "version": "latest",
+      "filename": "OBS-Studio-Installer.exe",
+      "url": "https://example.com/OBS.exe",
+      "sha256": "PLACEHOLDER",
+      "silentArgs": "/S",
+      "enabled": true,
+      "category": "Media"
+    },
+    {
+      "name": "CapCut",
+      "version": "latest",
+      "filename": "CapCut_Setup.exe",
+      "url": "https://example.com/CapCut.exe",
+      "sha256": "PLACEHOLDER",
+      "silentArgs": "",
+      "enabled": true,
+      "category": "Media"
+    },
+    {
+      "name": "HandBrake",
+      "version": "1.11.2",
+      "filename": "HandBrake-1.11.2-x86_64-Win_GUI.exe",
+      "url": "https://example.com/HandBrake.exe",
+      "sha256": "PLACEHOLDER",
+      "silentArgs": "/S",
+      "enabled": true,
+      "category": "Media"
+    },
+    {
+      "name": "KMPlayer",
+      "version": "latest",
+      "filename": "KMPlayer_setup.exe",
+      "url": "https://example.com/KMPlayer.exe",
+      "sha256": "PLACEHOLDER",
+      "silentArgs": "/S",
+      "enabled": true,
+      "category": "Media"
+    },
+    {
+      "name": "iVCam",
+      "version": "7.4.2",
+      "filename": "iVCam_x64_v7.4.2.exe",
+      "url": "https://example.com/iVCam.exe",
+      "sha256": "PLACEHOLDER",
+      "silentArgs": "/VERYSILENT",
+      "enabled": true,
+      "category": "Media"
+    },
+    {
+      "name": "Flixmate",
+      "version": "latest",
+      "filename": "Flixmate_setup.exe",
+      "url": "https://example.com/Flixmate.exe",
+      "sha256": "PLACEHOLDER",
+      "silentArgs": "",
+      "enabled": true,
+      "category": "Media"
+    },
+    {
+      "name": "Voice Changer",
+      "version": "latest",
+      "filename": "voicewave_installer_20260823.17874900293476b4768732.exe",
+      "url": "https://example.com/voicewave.exe",
+      "sha256": "PLACEHOLDER",
+      "silentArgs": "",
+      "enabled": true,
+      "category": "Media"
+    },
+    {
+      "name": "Lively Wallpaper",
+      "version": "latest",
+      "filename": "LivelyWallpaperSetup.exe",
+      "url": "https://example.com/LivelyWallpaper.exe",
+      "sha256": "PLACEHOLDER",
+      "silentArgs": "/VERYSILENT",
+      "enabled": true,
+      "category": "Desktop"
+    },
+    {
+      "name": "Crypto VX7 Software",
+      "version": "latest",
+      "filename": "Crypto_VX7.exe",
+      "url": "https://example.com/Crypto_VX7.exe",
+      "sha256": "PLACEHOLDER",
+      "silentArgs": "/S",
+      "enabled": true,
+      "category": "Peripherals"
+    },
+    {
+      "name": "Inno Setup",
+      "version": "6.7.3",
+      "filename": "innosetup-6.7.3.exe",
+      "url": "https://example.com/innosetup-6.7.3.exe",
+      "sha256": "PLACEHOLDER",
+      "silentArgs": "/VERYSILENT",
+      "enabled": true,
+      "category": "Development"
+    }
+  ]
+}
