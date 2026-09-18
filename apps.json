@@ -16,7 +16,7 @@
       "filename": "vcredist2005_x86.exe",
       "url": "https://github.com/sultan9901/STREAM-SETUP-CENTER/releases/download/v1.0.0/vcredist2005_x86.exe",
       "sha256": "C615D7454875949FD969F95F114E168FBE8867C01F1A7DB632F54F53C2EBE75C",
-      "silentArgs": "/q /norestart",
+      "silentArgs": "/q",
       "enabled": true,
       "category": "Dependencies"
     },
@@ -26,7 +26,7 @@
       "filename": "vcredist2005_x64.exe",
       "url": "https://github.com/sultan9901/STREAM-SETUP-CENTER/releases/download/v1.0.0/vcredist2005_x64.exe",
       "sha256": "BB9E8606E26C2B76984252182F7DB0D6E9108B204B81D2A7B036C9B618C1F9F1",
-      "silentArgs": "/q /norestart",
+      "silentArgs": "/q",
       "enabled": true,
       "category": "Dependencies"
     },
