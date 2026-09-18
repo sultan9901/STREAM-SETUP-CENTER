@@ -1,0 +1,394 @@
+{
+  "apps": [
+    {
+      "name": "DirectX Web Setup",
+      "version": "latest",
+      "filename": "dxwebsetup.exe",
+      "url": "https://github.com/sultan9901/STREAM-SETUP-CENTER/releases/download/v1.0.0/dxwebsetup.exe",
+      "sha256": "2CF71D098C608C56E07F4655855A886C3102553F648DF88458DF616B26FD612F",
+      "silentArgs": "/Q",
+      "enabled": true,
+      "category": "Dependencies"
+    },
+    {
+      "name": "Microsoft Visual C++ 2005 x86",
+      "version": "2005",
+      "filename": "vcredist2005_x86.exe",
+      "url": "https://github.com/sultan9901/STREAM-SETUP-CENTER/releases/download/v1.0.0/vcredist2005_x86.exe",
+      "sha256": "C615D7454875949FD969F95F114E168FBE8867C01F1A7DB632F54F53C2EBE75C",
+      "silentArgs": "/q /norestart",
+      "enabled": true,
+      "category": "Dependencies"
+    },
+    {
+      "name": "Microsoft Visual C++ 2005 x64",
+      "version": "2005",
+      "filename": "vcredist2005_x64.exe",
+      "url": "https://github.com/sultan9901/STREAM-SETUP-CENTER/releases/download/v1.0.0/vcredist2005_x64.exe",
+      "sha256": "BB9E8606E26C2B76984252182F7DB0D6E9108B204B81D2A7B036C9B618C1F9F1",
+      "silentArgs": "/q /norestart",
+      "enabled": true,
+      "category": "Dependencies"
+    },
+    {
+      "name": "Microsoft Visual C++ 2008 x86",
+      "version": "2008",
+      "filename": "vcredist2008_x86.exe",
+      "url": "https://github.com/sultan9901/STREAM-SETUP-CENTER/releases/download/v1.0.0/vcredist2008_x86.exe",
+      "sha256": "6B3E4C51C6C0E5F68C8A72B497445AF3DBF976394CBB62AA23569065C28DEEB6",
+      "silentArgs": "/q /norestart",
+      "enabled": true,
+      "category": "Dependencies"
+    },
+    {
+      "name": "Microsoft Visual C++ 2008 x64",
+      "version": "2008",
+      "filename": "vcredist2008_x64.exe",
+      "url": "https://github.com/sultan9901/STREAM-SETUP-CENTER/releases/download/v1.0.0/vcredist2008_x64.exe",
+      "sha256": "B811F2C047A3E828517C234BD4AA4883E1EC591D88FAD21289AE68A6915A6665",
+      "silentArgs": "/q /norestart",
+      "enabled": true,
+      "category": "Dependencies"
+    },
+    {
+      "name": "Microsoft Visual C++ 2010 x86",
+      "version": "2010",
+      "filename": "vcredist2010_x86.exe",
+      "url": "https://github.com/sultan9901/STREAM-SETUP-CENTER/releases/download/v1.0.0/vcredist2010_x86.exe",
+      "sha256": "67313B3D1BC86E83091E8DE22981F14968F1A7FB12EB7AD467754C40CD94CC3D",
+      "silentArgs": "/q /norestart",
+      "enabled": true,
+      "category": "Dependencies"
+    },
+    {
+      "name": "Microsoft Visual C++ 2010 x64",
+      "version": "2010",
+      "filename": "vcredist2010_x64.exe",
+      "url": "https://github.com/sultan9901/STREAM-SETUP-CENTER/releases/download/v1.0.0/vcredist2010_x64.exe",
+      "sha256": "CC7EC044218C72A9A15FCA2363BAED8FC51095EE3B2A7593476771F9EBA3D223",
+      "silentArgs": "/q /norestart",
+      "enabled": true,
+      "category": "Dependencies"
+    },
+    {
+      "name": "Microsoft Visual C++ 2012 x86",
+      "version": "2012",
+      "filename": "vcredist2012_x86.exe",
+      "url": "https://github.com/sultan9901/STREAM-SETUP-CENTER/releases/download/v1.0.0/vcredist2012_x86.exe",
+      "sha256": "B924AD8062EAF4E70437C8BE50FA612162795FF0839479546CE907FFA8D6E386",
+      "silentArgs": "/install /quiet /norestart",
+      "enabled": true,
+      "category": "Dependencies"
+    },
+    {
+      "name": "Microsoft Visual C++ 2012 x64",
+      "version": "2012",
+      "filename": "vcredist2012_x64.exe",
+      "url": "https://github.com/sultan9901/STREAM-SETUP-CENTER/releases/download/v1.0.0/vcredist2012_x64.exe",
+      "sha256": "681BE3E5BA9FD3DA02C09D7E565ADFA078640ED66A0D58583EFAD2C1E3CC4064",
+      "silentArgs": "/install /quiet /norestart",
+      "enabled": true,
+      "category": "Dependencies"
+    },
+    {
+      "name": "Microsoft Visual C++ 2013 x86",
+      "version": "2013",
+      "filename": "vcredist2013_x86.exe",
+      "url": "https://github.com/sultan9901/STREAM-SETUP-CENTER/releases/download/v1.0.0/vcredist2013_x86.exe",
+      "sha256": "53B605D1100AB0A88B867447BBF9274B5938125024BA01F5105A9E178A3DCDBD",
+      "silentArgs": "/install /quiet /norestart",
+      "enabled": true,
+      "category": "Dependencies"
+    },
+    {
+      "name": "Microsoft Visual C++ 2013 x64",
+      "version": "2013",
+      "filename": "vcredist2013_x64.exe",
+      "url": "https://github.com/sultan9901/STREAM-SETUP-CENTER/releases/download/v1.0.0/vcredist2013_x64.exe",
+      "sha256": "A4BBA7701E355AE29C403431F871A537897C363E215CAFE706615E270984F17C",
+      "silentArgs": "/install /quiet /norestart",
+      "enabled": true,
+      "category": "Dependencies"
+    },
+    {
+      "name": "Microsoft Visual C++ 2015-2022 x86",
+      "version": "2015-2022",
+      "filename": "vcredist2015_x86.exe",
+      "url": "https://github.com/sultan9901/STREAM-SETUP-CENTER/releases/download/v1.0.0/vcredist2015_x86.exe",
+      "sha256": "E59AE3E886BD4571A811FE31A47959AE5C40D87C583F786816C60440252CD7EC",
+      "silentArgs": "/install /quiet /norestart",
+      "enabled": true,
+      "category": "Dependencies"
+    },
+    {
+      "name": "Microsoft Visual C++ 2015-2022 x64",
+      "version": "2015-2022",
+      "filename": "vcredist2015_x64.exe",
+      "url": "https://github.com/sultan9901/STREAM-SETUP-CENTER/releases/download/v1.0.0/vcredist2015_x64.exe",
+      "sha256": "40EA2955391C9EAE3E35619C4C24B5AAF3D17AEAA6D09424EE9672AA9372AEED",
+      "silentArgs": "/install /quiet /norestart",
+      "enabled": true,
+      "category": "Dependencies"
+    },
+    {
+      "name": ".NET SDK 8",
+      "version": "8.0.424",
+      "filename": "dotnet-sdk-8.0.424-win-x86.exe",
+      "url": "https://github.com/sultan9901/STREAM-SETUP-CENTER/releases/download/v1.0.0/dotnet-sdk-8.0.424-win-x86.exe",
+      "sha256": "C320C591860835AEDDDD2F616101FB3804FAE15E79EDCB70DC95C4F16E21270D",
+      "silentArgs": "/quiet /norestart",
+      "enabled": true,
+      "category": "Dependencies"
+    },
+    {
+      "name": "Node.js",
+      "version": "24.18.0",
+      "filename": "node-v24.18.0-x64.msi",
+      "url": "https://github.com/sultan9901/STREAM-SETUP-CENTER/releases/download/v1.0.0/node-v24.18.0-x64.msi",
+      "sha256": "E30CD4CA15529583AFE0EFC978F1AE3AB3A93C2400C222D0752D17900552EBB3",
+      "silentArgs": "/quiet /norestart",
+      "enabled": true,
+      "category": "Development"
+    },
+    {
+      "name": "Python 3.12",
+      "version": "3.12.9",
+      "filename": "python-3.12.9-amd64.exe",
+      "url": "https://github.com/sultan9901/STREAM-SETUP-CENTER/releases/download/v1.0.0/python-3.12.9-amd64.exe",
+      "sha256": "2A52993092A19CFDFFE126E2EEAC46A4265E25705614546604AD44988E040C0F",
+      "silentArgs": "/quiet InstallAllUsers=1 PrependPath=1",
+      "enabled": true,
+      "category": "Development"
+    },
+    {
+      "name": "Python 3.14",
+      "version": "3.14.6",
+      "filename": "python-3.14.6-amd64.exe",
+      "url": "https://github.com/sultan9901/STREAM-SETUP-CENTER/releases/download/v1.0.0/python-3.14.6-amd64.exe",
+      "sha256": "14B3E9A710A3FCF0BD9B55AB6B60412BD91227563F813FC49040CABC0209E0BD",
+      "silentArgs": "/quiet InstallAllUsers=1 PrependPath=1",
+      "enabled": true,
+      "category": "Development"
+    },
+    {
+      "name": "Git",
+      "version": "2.55.0",
+      "filename": "Git-2.55.0.5-64-bit.exe",
+      "url": "https://github.com/sultan9901/STREAM-SETUP-CENTER/releases/download/v1.0.0/Git-2.55.0.5-64-bit.exe",
+      "sha256": "D065A4E23C3D9A6B5073D609B5BE0830227EC3CA053C083BA385061DDFAF94C6",
+      "silentArgs": "/VERYSILENT /NORESTART",
+      "enabled": true,
+      "category": "Development"
+    },
+    {
+      "name": "Visual Studio Code",
+      "version": "1.127.0",
+      "filename": "VSCodeUserSetup-x64-1.127.0.exe",
+      "url": "https://github.com/sultan9901/STREAM-SETUP-CENTER/releases/download/v1.0.0/VSCodeUserSetup-x64-1.127.0.exe",
+      "sha256": "6822480E43E24706EA42D4BE9E9A5DA94553081E739CCDC068658F53AB9E607A",
+      "silentArgs": "/VERYSILENT /MERGETASKS=!runcode",
+      "enabled": true,
+      "category": "Development"
+    },
+    {
+      "name": "Visual Studio Setup",
+      "version": "latest",
+      "filename": "VisualStudioSetup.exe",
+      "url": "https://github.com/sultan9901/STREAM-SETUP-CENTER/releases/download/v1.0.0/VisualStudioSetup.exe",
+      "sha256": "E41534E3A1D6F6C38E6781D539EE1D08039BF60E7B1F517B3FD0A03B583701D2",
+      "silentArgs": "--quiet --norestart",
+      "enabled": true,
+      "category": "Development"
+    },
+    {
+      "name": "Inno Setup",
+      "version": "6.7.3",
+      "filename": "innosetup-6.7.3.exe",
+      "url": "https://github.com/sultan9901/STREAM-SETUP-CENTER/releases/download/v1.0.0/innosetup-6.7.3.exe",
+      "sha256": "9C73C3BAE7ED48D44112A0F48E66742C00090BDB5BEF71D9D3C056C66E97B732",
+      "silentArgs": "/VERYSILENT",
+      "enabled": true,
+      "category": "Development"
+    },
+    {
+      "name": "Google Chrome",
+      "version": "latest",
+      "filename": "ChromeSetup.exe",
+      "url": "https://github.com/sultan9901/STREAM-SETUP-CENTER/releases/download/v1.0.0/ChromeSetup.exe",
+      "sha256": "AF096016570B8803DD6A96776BAF7AD9A638399FC3980A933AF508DF14D4F0D0",
+      "silentArgs": "/silent /install",
+      "enabled": true,
+      "category": "Browsers"
+    },
+    {
+      "name": "WinRAR x64",
+      "version": "7.01",
+      "filename": "winrar-x64-701.exe",
+      "url": "https://github.com/sultan9901/STREAM-SETUP-CENTER/releases/download/v1.0.0/winrar-x64-701.exe",
+      "sha256": "C5B5DEF1C8882B702B6B25CBD94461C737BC151366D2D9EBA5006C04886BFC9A",
+      "silentArgs": "/S",
+      "enabled": true,
+      "category": "Utilities"
+    },
+    {
+      "name": "Everything Search",
+      "version": "1.4.1.1032",
+      "filename": "Everything-1.4.1.1032.x86-Setup.exe",
+      "url": "https://github.com/sultan9901/STREAM-SETUP-CENTER/releases/download/v1.0.0/Everything-1.4.1.1032.x86-Setup.exe",
+      "sha256": "781A31B440045219752A1BB40FBD204B1D96964D4BF56AF01B18E3D549B037AA",
+      "silentArgs": "/S",
+      "enabled": true,
+      "category": "Utilities"
+    },
+    {
+      "name": "Revo Uninstaller Pro",
+      "version": "latest",
+      "filename": "RevoUninProSetup.exe",
+      "url": "https://github.com/sultan9901/STREAM-SETUP-CENTER/releases/download/v1.0.0/RevoUninProSetup.exe",
+      "sha256": "2C05CFCEE763B863FC843F703D48083C1EC9299DA7E18AAB45FE9B019D043538",
+      "silentArgs": "/VERYSILENT /NORESTART",
+      "enabled": true,
+      "category": "Utilities"
+    },
+    {
+      "name": "EaseUS Video Editor",
+      "version": "Free",
+      "filename": "evw_free_easeus.exe",
+      "url": "https://github.com/sultan9901/STREAM-SETUP-CENTER/releases/download/v1.0.0/evw_free_easeus.exe",
+      "sha256": "8580BE8EB76C526C6B9C56950F45A10B4DA1161323E213862019EAAC11185573",
+      "silentArgs": "/VERYSILENT /NORESTART",
+      "enabled": true,
+      "category": "Utilities"
+    },
+    {
+      "name": "Cloudflare WARP",
+      "version": "2026.6.850",
+      "filename": "Cloudflare_WARP_2026.6.850.0.msi",
+      "url": "https://github.com/sultan9901/STREAM-SETUP-CENTER/releases/download/v1.0.0/Cloudflare_WARP_2026.6.850.0.msi",
+      "sha256": "C8814ECE9DD91948FE4080F8D1DD08AF328D6DB98656D118F043E6B94E222A56",
+      "silentArgs": "/quiet /norestart",
+      "enabled": true,
+      "category": "Network"
+    },
+    {
+      "name": "UltraViewer",
+      "version": "6.6.124",
+      "filename": "UltraViewer_setup_6.6.124_en.exe",
+      "url": "https://github.com/sultan9901/STREAM-SETUP-CENTER/releases/download/v1.0.0/UltraViewer_setup_6.6.124_en.exe",
+      "sha256": "020AAC79A14717E316A593155CA778DD3E253B888BF62633B174838D35DF7F41",
+      "silentArgs": "/VERYSILENT",
+      "enabled": true,
+      "category": "Network"
+    },
+    {
+      "name": "BlueStacks 5",
+      "version": "5.13.200",
+      "filename": "BlueStacks 5.13.200.1029.exe",
+      "url": "https://github.com/sultan9901/STREAM-SETUP-CENTER/releases/download/v1.0.0/BlueStacks%205.13.200.1029.exe",
+      "sha256": "5D79AAD701B5C001BD3C13EF78D2283DF57623CCB4DFB06226B6EE21E41C6FF5",
+      "silentArgs": "",
+      "enabled": true,
+      "category": "Gaming"
+    },
+    {
+      "name": "BlueStacks Micro Installer",
+      "version": "5.22.75",
+      "filename": "BlueStacksMicroInstaller_5.22.75.6322_native.exe",
+      "url": "https://github.com/sultan9901/STREAM-SETUP-CENTER/releases/download/v1.0.0/BlueStacksMicroInstaller_5.22.75.6322_native.exe",
+      "sha256": "06CB3F619A7554DC955214E33358FB7CE6F4E734BF3020846CE5D4B7040FDF7E",
+      "silentArgs": "",
+      "enabled": false,
+      "category": "Gaming"
+    },
+    {
+      "name": "OBS Studio",
+      "version": "32.2.2",
+      "filename": "OBS-Studio-32.2.2-Windows-x64-Installer.exe",
+      "url": "https://github.com/sultan9901/STREAM-SETUP-CENTER/releases/download/v1.0.0/OBS-Studio-32.2.2-Windows-x64-Installer.exe",
+      "sha256": "C3A0B880ADBE64DC4BCB68F93016916AB5B55AE43FD227115287BF80257D92DC",
+      "silentArgs": "/S",
+      "enabled": true,
+      "category": "Media"
+    },
+    {
+      "name": "CapCut",
+      "version": "latest",
+      "filename": "CapCut_7661921864637530113_installer.exe",
+      "url": "https://github.com/sultan9901/STREAM-SETUP-CENTER/releases/download/v1.0.0/CapCut_7661921864637530113_installer.exe",
+      "sha256": "4CA745454E1EDD33EF8DEBDC7DCD33C63932FE4543381402540DD0A79278F3DF",
+      "silentArgs": "",
+      "enabled": true,
+      "category": "Media"
+    },
+    {
+      "name": "HandBrake",
+      "version": "1.11.2",
+      "filename": "HandBrake-1.11.2-x86_64-Win_GUI.exe",
+      "url": "https://github.com/sultan9901/STREAM-SETUP-CENTER/releases/download/v1.0.0/HandBrake-1.11.2-x86_64-Win_GUI.exe",
+      "sha256": "6BECB8E5A041941D5F2FD6FE83C66FC15B2B16190E2E79F5AD47EB4CD18DF8CD",
+      "silentArgs": "/S",
+      "enabled": true,
+      "category": "Media"
+    },
+    {
+      "name": "KMPlayer",
+      "version": "4.2.3.36",
+      "filename": "KMPlayer_4.2.3.36.exe",
+      "url": "https://github.com/sultan9901/STREAM-SETUP-CENTER/releases/download/v1.0.0/KMPlayer_4.2.3.36.exe",
+      "sha256": "A61258365410EFBA9EDD1CB1D21B605BE6E5966C6A1528EAB52191130E6E2B62",
+      "silentArgs": "/S",
+      "enabled": true,
+      "category": "Media"
+    },
+    {
+      "name": "iVCam",
+      "version": "7.4.2",
+      "filename": "iVCam_x64_v7.4.2.exe",
+      "url": "https://github.com/sultan9901/STREAM-SETUP-CENTER/releases/download/v1.0.0/iVCam_x64_v7.4.2.exe",
+      "sha256": "69BBC10081B77A1E0092115678727BA37B95D8E5B60C3A1B33103B2EAC4615FE",
+      "silentArgs": "/VERYSILENT",
+      "enabled": true,
+      "category": "Media"
+    },
+    {
+      "name": "Flixmate",
+      "version": "1.3.8.0",
+      "filename": "Flixmate-1.3.8.0-x64.exe",
+      "url": "https://github.com/sultan9901/STREAM-SETUP-CENTER/releases/download/v1.0.0/Flixmate-1.3.8.0-x64.exe",
+      "sha256": "2A3707AE9894FF9C89AC67E36A7E242BC920CBF427A42CEB6209517916B5DC71",
+      "silentArgs": "",
+      "enabled": true,
+      "category": "Media"
+    },
+    {
+      "name": "Voice Changer",
+      "version": "2.03",
+      "filename": "VoiceChanger64f(2.03).exe",
+      "url": "https://github.com/sultan9901/STREAM-SETUP-CENTER/releases/download/v1.0.0/VoiceChanger64f(2.03).exe",
+      "sha256": "7D514552F106558089BE8ABACC8AA7DE247E7A6DF93FE8BB16FDFD3ED5D61A40",
+      "silentArgs": "",
+      "enabled": true,
+      "category": "Media"
+    },
+    {
+      "name": "Lively Wallpaper",
+      "version": "latest",
+      "filename": "LivelyWallpaperSetup.exe",
+      "url": "https://github.com/sultan9901/STREAM-SETUP-CENTER/releases/download/v1.0.0/LivelyWallpaperSetup.exe",
+      "sha256": "CCB30190D6D45BFD870D523DC7FE93B774848CB7CA4952A3D331D87D106B2E5A",
+      "silentArgs": "/VERYSILENT",
+      "enabled": true,
+      "category": "Desktop"
+    },
+    {
+      "name": "Crypto VX7 Software",
+      "version": "1.0",
+      "filename": "Crypto_VX7_Software_V1.0_20030200.exe",
+      "url": "https://github.com/sultan9901/STREAM-SETUP-CENTER/releases/download/v1.0.0/Crypto_VX7_Software_V1.0_20030200.exe",
+      "sha256": "165AF580E207EC41B5C2B13DC23F31799F2D465E8FD515ED58905970093FF73F",
+      "silentArgs": "/S",
+      "enabled": true,
+      "category": "Peripherals"
+    }
+  ]
+}
