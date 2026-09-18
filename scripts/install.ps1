@@ -30,12 +30,39 @@ function Install-App {
         if ($process) {
             $process.WaitForExit()
             $exitCode = $process.ExitCode
-            if ($exitCode -eq 0 -or $exitCode -eq 3010) { # 3010 is restart required, still a success
-                Write-Host "  [INSTALL] Successfully installed." -ForegroundColor Green
-                return $true
-            } else {
-                Write-Host "  [INSTALL] Installer exited with code $exitCode." -ForegroundColor Red
-                return $false
+
+            # Known success/skip exit codes:
+            # 0     = Success
+            # 3010  = Success, restart required
+            # 1638  = Another version already installed (already present = OK)
+            # 1641  = Success, system restart initiated
+            # -9    = DirectX already up-to-date on this Windows version
+
+            switch ($exitCode) {
+                0 {
+                    Write-Host "  [INSTALL] Successfully installed." -ForegroundColor Green
+                    return $true
+                }
+                3010 {
+                    Write-Host "  [INSTALL] Installed successfully. A restart is recommended." -ForegroundColor Yellow
+                    return $true
+                }
+                1638 {
+                    Write-Host "  [INSTALL] Already installed (same or newer version present). Skipping." -ForegroundColor Yellow
+                    return $true
+                }
+                1641 {
+                    Write-Host "  [INSTALL] Installed successfully. System restart initiated." -ForegroundColor Yellow
+                    return $true
+                }
+                -9 {
+                    Write-Host "  [INSTALL] Component already present or up-to-date on this system." -ForegroundColor Yellow
+                    return $true
+                }
+                default {
+                    Write-Host "  [INSTALL] Installer exited with code $exitCode." -ForegroundColor Red
+                    return $false
+                }
             }
         } else {
              Write-Host "  [INSTALL] Process already exited or failed to start." -ForegroundColor Red
