@@ -42,12 +42,12 @@ if ($PSScriptRoot -and (Test-Path (Join-Path $PSScriptRoot "apps.json"))) {
     Invoke-RestMethod -Uri "$baseUrl/scripts/logger.ps1" -OutFile (Join-Path $scriptsDir "logger.ps1")
 }
 
-# Import Modules
-Import-Module (Join-Path $ScriptDir "scripts\ui.ps1") -Force
-Import-Module (Join-Path $ScriptDir "scripts\download.ps1") -Force
-Import-Module (Join-Path $ScriptDir "scripts\verify.ps1") -Force
-Import-Module (Join-Path $ScriptDir "scripts\install.ps1") -Force
-Import-Module (Join-Path $ScriptDir "scripts\logger.ps1") -Force
+# Load Scripts (Dot-Sourcing)
+. (Join-Path $ScriptDir "scripts\ui.ps1")
+. (Join-Path $ScriptDir "scripts\download.ps1")
+. (Join-Path $ScriptDir "scripts\verify.ps1")
+. (Join-Path $ScriptDir "scripts\install.ps1")
+. (Join-Path $ScriptDir "scripts\logger.ps1")
 
 # Load Configuration
 $ConfigPath = Join-Path $ScriptDir "config\settings.json"
@@ -62,8 +62,11 @@ if (-not (Test-Path $ConfigPath) -or -not (Test-Path $AppsPath)) {
 $Config = Get-Content $ConfigPath -Raw | ConvertFrom-Json
 $AppsList = (Get-Content $AppsPath -Raw | ConvertFrom-Json).apps
 
-# Initialize Environment
+# Initialize Environment & Temp Download Directory
 $TempDir = [System.Environment]::ExpandEnvironmentVariables($Config.tempDownloadPath)
+if (-not $TempDir -or $TempDir -like '*%*') {
+    $TempDir = Join-Path $env:TEMP "STREAM_SETUP_CENTER"
+}
 if (-not (Test-Path $TempDir)) {
     New-Item -ItemType Directory -Path $TempDir -Force | Out-Null
 }

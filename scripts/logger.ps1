@@ -26,5 +26,3 @@ function Write-Log {
     
     Add-Content -Path $Global:LogFilePath -Value $logLine
 }
-
-Export-ModuleMember -Function Init-Logger, Write-Log

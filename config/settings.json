@@ -1,5 +1,5 @@
 {
-  "tempDownloadPath": "$env:TEMP\\STREAM_SETUP_CENTER",
+  "tempDownloadPath": "%TEMP%\\STREAM_SETUP_CENTER",
   "cleanupAfterInstall": true,
   "concurrentDownloads": false,
   "requireAdmin": true

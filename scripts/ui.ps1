@@ -70,5 +70,3 @@ function Show-StepDone {
 function Show-StepFail {
     Write-Host "Failed" -ForegroundColor Red
 }
-
-Export-ModuleMember -Function Show-Header, Write-UIInfo, Write-UISuccess, Write-UIWarning, Write-UIError, Write-UISkip, Show-AppStatus, Show-Step, Show-StepDone, Show-StepFail

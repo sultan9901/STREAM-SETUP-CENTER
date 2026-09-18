@@ -13,17 +13,11 @@ function Download-File {
         try {
             Write-Host "  [DOWNLOAD] Downloading from $Url (Attempt $Attempt)..." -ForegroundColor Cyan
             
-            # Using System.Net.WebClient for better performance than Invoke-WebRequest on older PS versions
             $webClient = New-Object System.Net.WebClient
-            
-            # If we want progress, we could hook into DownloadProgressChanged, but that requires event subscriptions.
-            # To keep it beginner-friendly and stable across PS versions, we'll use a simpler approach.
-            # We will use Invoke-WebRequest for progress if PS version is high, or WebClient for speed.
             
             if ($PSVersionTable.PSVersion.Major -ge 6) {
                 Invoke-WebRequest -Uri $Url -OutFile $Destination -ErrorAction Stop
             } else {
-                # In PS 5.1, Invoke-WebRequest is slow. Using WebClient.
                 $webClient.DownloadFile($Url, $Destination)
             }
             
@@ -61,5 +55,3 @@ function Test-DiskSpace {
     }
     return $true
 }
-
-Export-ModuleMember -Function Download-File, Test-DiskSpace

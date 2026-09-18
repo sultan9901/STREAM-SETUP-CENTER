@@ -28,5 +28,3 @@ function Test-FileHashMatch {
         return $false
     }
 }
-
-Export-ModuleMember -Function Test-FileHashMatch

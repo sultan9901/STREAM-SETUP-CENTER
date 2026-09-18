@@ -47,5 +47,3 @@ function Install-App {
         return $false
     }
 }
-
-Export-ModuleMember -Function Install-App
