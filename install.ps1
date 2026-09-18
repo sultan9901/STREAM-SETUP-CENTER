@@ -62,11 +62,8 @@ if (-not (Test-Path $ConfigPath) -or -not (Test-Path $AppsPath)) {
 $Config = Get-Content $ConfigPath -Raw | ConvertFrom-Json
 $AppsList = (Get-Content $AppsPath -Raw | ConvertFrom-Json).apps
 
-# Initialize Environment & Temp Download Directory
-$TempDir = [System.Environment]::ExpandEnvironmentVariables($Config.tempDownloadPath)
-if (-not $TempDir -or $TempDir -like '*%*') {
-    $TempDir = Join-Path $env:TEMP "STREAM_SETUP_CENTER"
-}
+# Initialize Environment & Temp Download Directory (Guaranteed Safe Path)
+$TempDir = Join-Path $env:TEMP "STREAM_SETUP_DOWNLOADS"
 if (-not (Test-Path $TempDir)) {
     New-Item -ItemType Directory -Path $TempDir -Force | Out-Null
 }
