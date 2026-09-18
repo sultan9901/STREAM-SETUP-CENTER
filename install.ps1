@@ -8,11 +8,44 @@ if ((Get-ExecutionPolicy -Scope Process) -ne 'Bypass') {
 $isAdmin = ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
 if (-not $isAdmin) {
     Write-Host "Administrator permissions required. Requesting elevation..." -ForegroundColor Yellow
-    Start-Process powershell -ArgumentList "-NoProfile -ExecutionPolicy Bypass -File `"$PSCommandPath`"" -Verb RunAs
+    if ($PSCommandPath) {
+        Start-Process powershell -ArgumentList "-NoProfile -ExecutionPolicy Bypass -File `"$PSCommandPath`"" -Verb RunAs
+    } else {
+        # Running via iex
+        Start-Process powershell -ArgumentList "-NoProfile -ExecutionPolicy Bypass -Command `"irm https://raw.githubusercontent.com/sultan9901/STREAM-SETUP-CENTER/main/install.ps1 | iex`"" -Verb RunAs
+    }
     exit
 }
 
-$ScriptDir = Split-Path -Parent $MyInvocation.MyCommand.Definition
+# Determine Script Directory or Bootstrap Remote Files
+$ScriptDir = ""
+if ($MyInvocation.MyCommand.Definition) {
+    $ScriptDir = Split-Path -Parent $MyInvocation.MyCommand.Definition
+}
+
+# If running remotely (irm | iex) or files missing, bootstrap into temp folder
+if (-not $ScriptDir -or -not (Test-Path (Join-Path $ScriptDir "apps.json"))) {
+    $ScriptDir = Join-Path $env:TEMP "STREAM-SETUP-CENTER"
+    if (-not (Test-Path $ScriptDir)) {
+        New-Item -ItemType Directory -Path $ScriptDir -Force | Out-Null
+    }
+    
+    $scriptsDir = Join-Path $ScriptDir "scripts"
+    $configDir = Join-Path $ScriptDir "config"
+    New-Item -ItemType Directory -Path $scriptsDir -Force | Out-Null
+    New-Item -ItemType Directory -Path $configDir -Force | Out-Null
+    
+    Write-Host "Fetching configuration and modules from GitHub..." -ForegroundColor Cyan
+    $baseUrl = "https://raw.githubusercontent.com/sultan9901/STREAM-SETUP-CENTER/main"
+    
+    Invoke-RestMethod -Uri "$baseUrl/apps.json" -OutFile (Join-Path $ScriptDir "apps.json")
+    Invoke-RestMethod -Uri "$baseUrl/config/settings.json" -OutFile (Join-Path $configDir "settings.json")
+    Invoke-RestMethod -Uri "$baseUrl/scripts/ui.ps1" -OutFile (Join-Path $scriptsDir "ui.ps1")
+    Invoke-RestMethod -Uri "$baseUrl/scripts/download.ps1" -OutFile (Join-Path $scriptsDir "download.ps1")
+    Invoke-RestMethod -Uri "$baseUrl/scripts/verify.ps1" -OutFile (Join-Path $scriptsDir "verify.ps1")
+    Invoke-RestMethod -Uri "$baseUrl/scripts/install.ps1" -OutFile (Join-Path $scriptsDir "install.ps1")
+    Invoke-RestMethod -Uri "$baseUrl/scripts/logger.ps1" -OutFile (Join-Path $scriptsDir "logger.ps1")
+}
 
 # Import Modules
 Import-Module (Join-Path $ScriptDir "scripts\ui.ps1") -Force
@@ -31,8 +64,8 @@ if (-not (Test-Path $ConfigPath) -or -not (Test-Path $AppsPath)) {
     exit
 }
 
-$Config = Get-Content $ConfigPath | ConvertFrom-Json
-$AppsList = (Get-Content $AppsPath | ConvertFrom-Json).apps
+$Config = Get-Content $ConfigPath -Raw | ConvertFrom-Json
+$AppsList = (Get-Content $AppsPath -Raw | ConvertFrom-Json).apps
 
 # Initialize Environment
 $TempDir = [System.Environment]::ExpandEnvironmentVariables($Config.tempDownloadPath)
@@ -88,10 +121,6 @@ foreach ($app in $AppsList) {
     Show-Header
     Show-AppStatus -AppName $app.name -Current $CurrentAppIndex -Total $TotalApps
     Write-Log "Processing: $($app.name)"
-
-    # Detect if already installed (Simple logic based on registry or custom script could be added here)
-    # For now, we will proceed with download/install as requested, 
-    # a robust detection mechanism requires specific registry keys per app.
 
     $InstallerPath = Join-Path $TempDir $app.filename
 
