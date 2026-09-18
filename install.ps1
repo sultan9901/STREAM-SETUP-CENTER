@@ -11,20 +11,15 @@ if (-not $isAdmin) {
     if ($PSCommandPath) {
         Start-Process powershell -ArgumentList "-NoProfile -ExecutionPolicy Bypass -File `"$PSCommandPath`"" -Verb RunAs
     } else {
-        # Running via iex
         Start-Process powershell -ArgumentList "-NoProfile -ExecutionPolicy Bypass -Command `"irm https://raw.githubusercontent.com/sultan9901/STREAM-SETUP-CENTER/main/install.ps1 | iex`"" -Verb RunAs
     }
     exit
 }
 
-# Determine Script Directory or Bootstrap Remote Files
-$ScriptDir = ""
-if ($MyInvocation.MyCommand.Definition) {
-    $ScriptDir = Split-Path -Parent $MyInvocation.MyCommand.Definition
-}
-
-# If running remotely (irm | iex) or files missing, bootstrap into temp folder
-if (-not $ScriptDir -or -not (Test-Path (Join-Path $ScriptDir "apps.json"))) {
+# Determine Script Directory (Local vs Remote Execution)
+if ($PSScriptRoot -and (Test-Path (Join-Path $PSScriptRoot "apps.json"))) {
+    $ScriptDir = $PSScriptRoot
+} else {
     $ScriptDir = Join-Path $env:TEMP "STREAM-SETUP-CENTER"
     if (-not (Test-Path $ScriptDir)) {
         New-Item -ItemType Directory -Path $ScriptDir -Force | Out-Null
