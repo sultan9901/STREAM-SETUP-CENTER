@@ -283,8 +283,8 @@
     {
       "name": "BlueStacks 5",
       "version": "5.13.200",
-      "filename": "BlueStacks 5.13.200.1029.exe",
-      "url": "https://github.com/sultan9901/STREAM-SETUP-CENTER/releases/download/v1.0.0/BlueStacks%205.13.200.1029.exe",
+      "filename": "BlueStacks.5.13.200.1029.exe",
+      "url": "https://github.com/sultan9901/STREAM-SETUP-CENTER/releases/download/v1.0.0/BlueStacks.5.13.200.1029.exe",
       "sha256": "5D79AAD701B5C001BD3C13EF78D2283DF57623CCB4DFB06226B6EE21E41C6FF5",
       "silentArgs": "",
       "enabled": true,
@@ -363,8 +363,8 @@
     {
       "name": "Voice Changer",
       "version": "2.03",
-      "filename": "VoiceChanger64f(2.03).exe",
-      "url": "https://github.com/sultan9901/STREAM-SETUP-CENTER/releases/download/v1.0.0/VoiceChanger64f(2.03).exe",
+      "filename": "VoiceChanger64f.2.03.exe",
+      "url": "https://github.com/sultan9901/STREAM-SETUP-CENTER/releases/download/v1.0.0/VoiceChanger64f.2.03.exe",
       "sha256": "7D514552F106558089BE8ABACC8AA7DE247E7A6DF93FE8BB16FDFD3ED5D61A40",
       "silentArgs": "",
       "enabled": true,
