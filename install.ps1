@@ -1,5 +1,5 @@
 # ============================================================
-# STREAM SETUP CENTER - Main Execution Script
+# SULTAN SETUP CENTER - Main Execution Script
 # Mode: SUPER FAST  Parallel Download + Sequential Install
 # ============================================================
 
@@ -14,7 +14,7 @@ if (-not $isAdmin) {
     if ($PSCommandPath) {
         Start-Process powershell -ArgumentList "-NoProfile -ExecutionPolicy Bypass -File `"$PSCommandPath`"" -Verb RunAs
     } else {
-        Start-Process powershell -ArgumentList "-NoProfile -ExecutionPolicy Bypass -Command `"irm https://raw.githubusercontent.com/sultan9901/STREAM-SETUP-CENTER/main/install.ps1 | iex`"" -Verb RunAs
+        Start-Process powershell -ArgumentList "-NoProfile -ExecutionPolicy Bypass -Command `"irm https://raw.githubusercontent.com/sultan9901/SULTAN-SETUP-CENTER/main/install.ps1 | iex`"" -Verb RunAs
     }
     exit
 }
@@ -23,7 +23,7 @@ if (-not $isAdmin) {
 if ($PSScriptRoot -and (Test-Path (Join-Path $PSScriptRoot "apps.json"))) {
     $ScriptDir = $PSScriptRoot
 } else {
-    $ScriptDir = Join-Path $env:TEMP "STREAM-SETUP-CENTER"
+    $ScriptDir = Join-Path $env:TEMP "SULTAN-SETUP-CENTER"
     if (-not (Test-Path $ScriptDir)) {
         New-Item -ItemType Directory -Path $ScriptDir -Force | Out-Null
     }
@@ -34,7 +34,7 @@ if ($PSScriptRoot -and (Test-Path (Join-Path $PSScriptRoot "apps.json"))) {
     New-Item -ItemType Directory -Path $configDir  -Force | Out-Null
 
     Write-Host "Fetching configuration and modules from GitHub..." -ForegroundColor Cyan
-    $baseUrl = "https://raw.githubusercontent.com/sultan9901/STREAM-SETUP-CENTER/main"
+    $baseUrl = "https://raw.githubusercontent.com/sultan9901/SULTAN-SETUP-CENTER/main"
 
     Invoke-RestMethod -Uri "$baseUrl/apps.json"              -OutFile (Join-Path $ScriptDir  "apps.json")
     Invoke-RestMethod -Uri "$baseUrl/config/settings.json"  -OutFile (Join-Path $configDir  "settings.json")
@@ -65,7 +65,7 @@ $Config   = Get-Content $ConfigPath -Raw | ConvertFrom-Json
 $AppsList = (Get-Content $AppsPath  -Raw | ConvertFrom-Json).apps
 
 # Initialize Temp & Log Directories
-$TempDir = Join-Path $env:TEMP "STREAM_SETUP_DOWNLOADS"
+$TempDir = Join-Path $env:TEMP "SULTAN_SETUP_DOWNLOADS"
 if (-not (Test-Path $TempDir)) {
     New-Item -ItemType Directory -Path $TempDir -Force | Out-Null
 }
@@ -119,7 +119,7 @@ Write-Host ""
 
 Write-Log "Phase 1: Starting parallel download of $TotalApps apps."
 
-$downloadResults = Start-ParallelDownloads -Apps $EnabledApps -TempDir $TempDir -MaxConcurrent 8 -Retries 3
+$downloadResults = Start-ParallelDownloads -Apps $EnabledApps -TempDir $TempDir -MaxConcurrent 32 -Retries 3
 
 Write-Log "Phase 1: Parallel download complete."
 

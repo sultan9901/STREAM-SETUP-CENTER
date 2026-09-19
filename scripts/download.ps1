@@ -1,5 +1,5 @@
 # ============================================================
-# STREAM SETUP CENTER - Download Module
+# SULTAN SETUP CENTER - Download Module
 # Supports: Single download + Super-Fast Parallel Downloads
 # ============================================================
 
@@ -178,7 +178,8 @@ function Start-ParallelDownloads {
             if ($res.Success) {
                 $sizeKB  = [math]::Round($res.Bytes / 1024)
                 $sizeTxt = $sizeKB.ToString() + " KB"
-                $line    = "  [" + $bar + $spaces + "] " + $pct + "% | OK   " + $appName + " (" + $sizeTxt + ")"
+                $remaining = $total - $completed
+                $line    = "  [" + $bar + $spaces + "] " + $pct + "% | OK   " + $appName + " (" + $sizeTxt + ") | Done: $completed/$total | Remaining: $remaining"
                 Write-Host $line -ForegroundColor Green
             } else {
                 $errMsg = $res.Error

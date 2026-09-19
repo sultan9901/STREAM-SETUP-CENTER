@@ -5,7 +5,7 @@ function Show-Header {
     Clear-Host
 
     Write-Host "========================================" -ForegroundColor Cyan
-    Write-Host "       STREAM SETUP CENTER" -ForegroundColor Cyan -NoNewline
+    Write-Host "       SULTAN SETUP CENTER" -ForegroundColor Cyan -NoNewline
     Write-Host " "
     Write-Host "       WINDOWS SOFTWARE INSTALLER" -ForegroundColor DarkCyan
     Write-Host "========================================" -ForegroundColor Cyan
@@ -53,7 +53,8 @@ function Show-AppStatus {
         [int]$Current,
         [int]$Total
     )
-    Write-Host "`n[$Current/$Total] $AppName" -ForegroundColor White
+    $remaining = $Total - $Current
+    Write-Host "`n[$Current/$Total] Installing: $AppName | Remaining: $remaining" -ForegroundColor White
 }
 
 function Show-Step {

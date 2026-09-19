@@ -10,7 +10,7 @@ function Init-Logger {
     $Global:LogFilePath = Join-Path $LogDir "$timestamp.log"
     
     Write-Log "========================================"
-    Write-Log "STREAM SETUP CENTER LOG - $timestamp"
+    Write-Log "SULTAN SETUP CENTER LOG - $timestamp"
     Write-Log "========================================"
 }
 
