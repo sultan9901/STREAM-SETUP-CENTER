@@ -12,15 +12,17 @@ function Download-File {
     )
 
     $Attempt = 0
-    $Success = $false
+    $Success  = $false
 
     while ($Attempt -lt $Retries -and -not $Success) {
         $Attempt++
         try {
-            Write-Host "  [DOWNLOAD] Downloading from $Url (Attempt $Attempt)..." -ForegroundColor Cyan
+            $msg = "  [DOWNLOAD] Downloading (Attempt " + $Attempt + ")..."
+            Write-Host $msg -ForegroundColor Cyan
 
-            # Use BITS if available for faster transfer (Windows built-in multi-threaded)
-            if (Get-Command Start-BitsTransfer -ErrorAction SilentlyContinue) {
+            # Use BITS if available (Windows built-in, multi-threaded)
+            $bitsAvail = $null -ne (Get-Command Start-BitsTransfer -ErrorAction SilentlyContinue)
+            if ($bitsAvail) {
                 Start-BitsTransfer -Source $Url -Destination $Destination -TransferType Download -ErrorAction Stop
             } else {
                 $wc = New-Object System.Net.WebClient
@@ -32,8 +34,11 @@ function Download-File {
             Write-Host "  [DOWNLOAD] Complete." -ForegroundColor Green
         }
         catch {
-            Write-Host "  [DOWNLOAD] Failed: $($_.Exception.Message)" -ForegroundColor Red
-            if (Test-Path $Destination) { Remove-Item $Destination -Force -ErrorAction SilentlyContinue }
+            $errMsg = $_.Exception.Message
+            Write-Host "  [DOWNLOAD] Failed: $errMsg" -ForegroundColor Red
+            if (Test-Path $Destination) {
+                Remove-Item $Destination -Force -ErrorAction SilentlyContinue
+            }
             if ($Attempt -lt $Retries) {
                 Write-Host "  [DOWNLOAD] Retrying in 3 seconds..." -ForegroundColor Yellow
                 Start-Sleep -Seconds 3
@@ -42,7 +47,8 @@ function Download-File {
     }
 
     if (-not $Success) {
-        throw "Failed to download $Url after $Retries attempts."
+        $errFinal = "Failed to download after " + $Retries + " attempts: " + $Url
+        throw $errFinal
     }
 }
 
@@ -56,16 +62,17 @@ function Start-ParallelDownloads {
     )
 
     Write-Host ""
-    Write-Host "  ╔══════════════════════════════════════════╗" -ForegroundColor Cyan
-    Write-Host "  ║   SUPER FAST PARALLEL DOWNLOAD ENGINE   ║" -ForegroundColor Cyan
-    Write-Host "  ║   Downloading all $($Apps.Count) files simultaneously  ║" -ForegroundColor Cyan
-    Write-Host "  ╚══════════════════════════════════════════╝" -ForegroundColor Cyan
+    Write-Host "  +------------------------------------------+" -ForegroundColor Cyan
+    Write-Host "  |  SUPER FAST PARALLEL DOWNLOAD ENGINE     |" -ForegroundColor Cyan
+    $countLine = "  |  Downloading " + $Apps.Count + " files simultaneously      |"
+    Write-Host $countLine -ForegroundColor Cyan
+    Write-Host "  +------------------------------------------+" -ForegroundColor Cyan
     Write-Host ""
 
     $startTime = Get-Date
 
-    # Filter out already-downloaded files
-    $toDownload = @()
+    # Split into cached vs. needs downloading
+    $toDownload    = @()
     $alreadyCached = @()
     foreach ($app in $Apps) {
         $dest = Join-Path $TempDir $app.filename
@@ -77,7 +84,8 @@ function Start-ParallelDownloads {
     }
 
     if ($alreadyCached.Count -gt 0) {
-        Write-Host "  [CACHE] $($alreadyCached.Count) file(s) already downloaded. Skipping re-download." -ForegroundColor DarkGray
+        $cacheMsg = "  [CACHE] " + $alreadyCached.Count + " file(s) already cached - skipping re-download."
+        Write-Host $cacheMsg -ForegroundColor DarkGray
     }
 
     if ($toDownload.Count -eq 0) {
@@ -85,27 +93,25 @@ function Start-ParallelDownloads {
         return @{}
     }
 
-    Write-Host "  [PARALLEL] Starting $($toDownload.Count) downloads (max $MaxConcurrent concurrent)..." -ForegroundColor Yellow
+    $startMsg = "  [PARALLEL] Starting " + $toDownload.Count + " downloads (max " + $MaxConcurrent + " concurrent)..."
+    Write-Host $startMsg -ForegroundColor Yellow
     Write-Host ""
 
     # Build runspace pool
     $RunspacePool = [System.Management.Automation.Runspaces.RunspaceFactory]::CreateRunspacePool(1, $MaxConcurrent)
     $RunspacePool.Open()
 
-    # Script block executed in each runspace
+    # Script block run in each runspace
     $DownloadScript = {
         param($Url, $Destination, $Filename, $Retries)
-
         $result = @{
             Filename = $Filename
             Success  = $false
             Error    = ""
             Bytes    = 0
         }
-
         for ($i = 1; $i -le $Retries; $i++) {
             try {
-                # Try BITS first, fall back to WebClient
                 $useBits = $null -ne (Get-Command Start-BitsTransfer -ErrorAction SilentlyContinue)
                 if ($useBits) {
                     Start-BitsTransfer -Source $Url -Destination $Destination -TransferType Download -ErrorAction Stop
@@ -115,11 +121,14 @@ function Start-ParallelDownloads {
                     $wc.DownloadFile($Url, $Destination)
                 }
                 $result.Success = $true
-                $result.Bytes   = (Get-Item $Destination -ErrorAction SilentlyContinue).Length
+                $fileItem = Get-Item $Destination -ErrorAction SilentlyContinue
+                if ($fileItem) { $result.Bytes = $fileItem.Length }
                 break
             } catch {
                 $result.Error = $_.Exception.Message
-                if (Test-Path $Destination) { Remove-Item $Destination -Force -ErrorAction SilentlyContinue }
+                if (Test-Path $Destination) {
+                    Remove-Item $Destination -Force -ErrorAction SilentlyContinue
+                }
                 if ($i -lt $Retries) { Start-Sleep -Seconds 3 }
             }
         }
@@ -149,23 +158,32 @@ function Start-ParallelDownloads {
     Write-Host "  Progress:" -ForegroundColor White
 
     while ($completed -lt $total) {
-        Start-Sleep -Milliseconds 500
-        $done = $Jobs | Where-Object { $_.Handle.IsCompleted }
+        Start-Sleep -Milliseconds 600
+        $done = $Jobs | Where-Object { $_.Handle.IsCompleted -eq $true }
         foreach ($job in $done) {
             if ($results.ContainsKey($job.Filename)) { continue }
-            $output = $job.PS.EndInvoke($job.Handle)
+            $output  = $job.PS.EndInvoke($job.Handle)
             $job.PS.Dispose()
-            $res = $output[0]
+            $res     = $output[0]
             $results[$job.Filename] = $res
             $completed++
-            $pct = [math]::Round(($completed / $total) * 100)
-            $bar = "#" * [math]::Round($pct / 5)
-            $space = " " * (20 - $bar.Length)
+            $pct     = [math]::Round(($completed / $total) * 100)
+            $barLen  = [math]::Round($pct / 5)
+            $bar     = ""
+            for ($b = 0; $b -lt $barLen; $b++) { $bar += "#" }
+            $spaceLen = 20 - $barLen
+            $spaces   = ""
+            for ($s = 0; $s -lt $spaceLen; $s++) { $spaces += " " }
+            $appName = $job.Name
             if ($res.Success) {
-                $sizeKB = [math]::Round($res.Bytes / 1KB)
-                Write-Host "  [$bar$space] $pct% | [OK] $($job.Name) ($sizeKB KB)" -ForegroundColor Green
+                $sizeKB  = [math]::Round($res.Bytes / 1024)
+                $sizeTxt = $sizeKB.ToString() + " KB"
+                $line    = "  [" + $bar + $spaces + "] " + $pct + "% | OK   " + $appName + " (" + $sizeTxt + ")"
+                Write-Host $line -ForegroundColor Green
             } else {
-                Write-Host "  [$bar$space] $pct% | [FAIL] $($job.Name): $($res.Error)" -ForegroundColor Red
+                $errMsg = $res.Error
+                $line   = "  [" + $bar + $spaces + "] " + $pct + "% | FAIL " + $appName + " - " + $errMsg
+                Write-Host $line -ForegroundColor Red
             }
         }
     }
@@ -173,17 +191,19 @@ function Start-ParallelDownloads {
     $RunspacePool.Close()
     $RunspacePool.Dispose()
 
-    $elapsed = [math]::Round(((Get-Date) - $startTime).TotalSeconds, 1)
-    $successCount = ($results.Values | Where-Object { $_.Success }).Count
+    $elapsed      = [math]::Round(((Get-Date) - $startTime).TotalSeconds, 1)
+    $successCount = ($results.Values | Where-Object { $_.Success -eq $true }).Count
     $failCount    = $total - $successCount
 
     Write-Host ""
-    Write-Host "  ══════════════════════════════════════════" -ForegroundColor Cyan
-    Write-Host "  [DONE] $successCount/$total downloaded in ${elapsed}s" -ForegroundColor $(if ($failCount -eq 0) { "Green" } else { "Yellow" })
+    Write-Host "  +------------------------------------------+" -ForegroundColor Cyan
+    $doneMsg = "  | DONE: " + $successCount + "/" + $total + " downloaded in " + $elapsed + "s"
+    Write-Host $doneMsg -ForegroundColor $(if ($failCount -eq 0) { "Green" } else { "Yellow" })
     if ($failCount -gt 0) {
-        Write-Host "  [WARN] $failCount file(s) failed to download." -ForegroundColor Red
+        $failMsg = "  | WARN: " + $failCount + " file(s) failed to download"
+        Write-Host $failMsg -ForegroundColor Red
     }
-    Write-Host "  ══════════════════════════════════════════" -ForegroundColor Cyan
+    Write-Host "  +------------------------------------------+" -ForegroundColor Cyan
     Write-Host ""
 
     return $results
@@ -201,7 +221,8 @@ function Test-DiskSpace {
         $drive = (Get-Item $Path).PSDrive.Name + ":"
     }
 
-    $disk = Get-WmiObject Win32_LogicalDisk -Filter "DeviceID='$drive'"
+    $filter = "DeviceID='" + $drive + "'"
+    $disk   = Get-WmiObject Win32_LogicalDisk -Filter $filter
     if ($disk.FreeSpace -lt $RequiredBytes) {
         return $false
     }
