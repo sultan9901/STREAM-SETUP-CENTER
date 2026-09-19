@@ -1,4 +1,4 @@
-function Show-Header {
+﻿function Show-Header {
     Clear-Host
     $Host.UI.RawUI.BackgroundColor = "Black"
     $Host.UI.RawUI.ForegroundColor = "Gray"

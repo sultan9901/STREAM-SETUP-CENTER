@@ -1,4 +1,4 @@
-function Install-App {
+﻿function Install-App {
     param (
         [string]$FilePath,
         [string]$SilentArgs
