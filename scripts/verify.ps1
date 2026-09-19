@@ -1,4 +1,4 @@
-﻿function Test-FileHashMatch {
+function Test-FileHashMatch {
     param (
         [string]$FilePath,
         [string]$ExpectedHash

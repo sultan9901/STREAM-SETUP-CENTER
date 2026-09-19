@@ -1,6 +1,6 @@
-﻿# ============================================================
+# ============================================================
 # STREAM SETUP CENTER - Main Execution Script
-# Mode: SUPER FAST â€” Parallel Download + Sequential Install
+# Mode: SUPER FAST  Parallel Download + Sequential Install
 # ============================================================
 
 if ((Get-ExecutionPolicy -Scope Process) -ne 'Bypass') {
@@ -112,9 +112,9 @@ Write-Host ""
 
 Show-Header
 Write-Host ""
-Write-Host "  â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ" -ForegroundColor Cyan
-Write-Host "  â–ˆâ–ˆ  PHASE 1: PARALLEL DOWNLOAD ENGINE  â–ˆâ–ˆ" -ForegroundColor Cyan
-Write-Host "  â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ" -ForegroundColor Cyan
+Write-Host "  " -ForegroundColor Cyan
+Write-Host "    PHASE 1: PARALLEL DOWNLOAD ENGINE  " -ForegroundColor Cyan
+Write-Host "  " -ForegroundColor Cyan
 Write-Host ""
 
 Write-Log "Phase 1: Starting parallel download of $TotalApps apps."
@@ -124,14 +124,14 @@ $downloadResults = Start-ParallelDownloads -Apps $EnabledApps -TempDir $TempDir 
 Write-Log "Phase 1: Parallel download complete."
 
 # ============================================================
-# PHASE 2: VERIFY + INSTALL (Sequential â€” no conflicts)
+# PHASE 2: VERIFY + INSTALL (Sequential  no conflicts)
 # ============================================================
 
 Show-Header
 Write-Host ""
-Write-Host "  â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ" -ForegroundColor Green
-Write-Host "  â–ˆâ–ˆ  PHASE 2: VERIFY & INSTALL          â–ˆâ–ˆ" -ForegroundColor Green
-Write-Host "  â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ" -ForegroundColor Green
+Write-Host "  " -ForegroundColor Green
+Write-Host "    PHASE 2: VERIFY & INSTALL          " -ForegroundColor Green
+Write-Host "  " -ForegroundColor Green
 Write-Host ""
 
 Write-Log "Phase 2: Starting verify + install."
@@ -159,7 +159,7 @@ foreach ($app in $EnabledApps) {
             Write-Host "  [DOWNLOAD] File missing from parallel phase, downloading now..." -ForegroundColor Yellow
             Download-File -Url $app.url -Destination $InstallerPath
         } else {
-            Write-Host "  [DOWNLOAD] Already downloaded in Phase 1. âœ“" -ForegroundColor DarkGray
+            Write-Host "  [DOWNLOAD] Already downloaded in Phase 1. " -ForegroundColor DarkGray
         }
 
         # Verify Hash
@@ -211,13 +211,13 @@ foreach ($app in $EnabledApps) {
 
 Show-Header
 Write-Host ""
-Write-Host "  â•”â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•—" -ForegroundColor Cyan
-Write-Host "  â•‘         INSTALLATION SUMMARY           â•‘" -ForegroundColor Cyan
-Write-Host "  â•šâ•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•" -ForegroundColor Cyan
+Write-Host "  " -ForegroundColor Cyan
+Write-Host "           INSTALLATION SUMMARY           " -ForegroundColor Cyan
+Write-Host "  " -ForegroundColor Cyan
 Write-Host ""
-Write-Host "  âœ” SUCCESS : $SuccessCount" -ForegroundColor Green
-Write-Host "  âŠ˜ SKIPPED : $SkippedCount" -ForegroundColor DarkGray
-Write-Host "  âœ– FAILED  : $FailedCount"  -ForegroundColor $(if ($FailedCount -gt 0) { "Red" } else { "Green" })
+Write-Host "   SUCCESS : $SuccessCount" -ForegroundColor Green
+Write-Host "   SKIPPED : $SkippedCount" -ForegroundColor DarkGray
+Write-Host "   FAILED  : $FailedCount"  -ForegroundColor $(if ($FailedCount -gt 0) { "Red" } else { "Green" })
 
 if ($FailedCount -gt 0) {
     Write-Host ""

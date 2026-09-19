@@ -1,4 +1,4 @@
-﻿function Init-Logger {
+function Init-Logger {
     param (
         [string]$LogDir
     )
