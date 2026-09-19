@@ -23,7 +23,7 @@ foreach ($file in $files) {
         name = $file.BaseName
         version = "unknown"
         filename = $file.Name
-        url = "https://github.com/USERNAME/SULTAN-SETUP-CENTER/releases/download/v1.0/$($file.Name)"
+        url = "https://github.com/USERNAME/STREAM-SETUP-CENTER/releases/download/v1.0/$($file.Name)"
         sha256 = $hash
         silentArgs = ""
         enabled = $true
